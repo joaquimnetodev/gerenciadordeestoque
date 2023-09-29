@@ -1,5 +1,5 @@
-//C”DIGO QUEBRADO RECEBIDO PELA EQUIPE 4
-//ESTE C”DIGO FOI CONSERTADO E EST¡ FUNCIONAL
+//C√ìDIGO QUEBRADO RECEBIDO PELA EQUIPE 4
+//ESTE C√ìDIGO FOI CONSERTADO E EST√Å FUNCIONAL
 
 //CONSERTADO POR JOAQUIM BATISTA DA SILVA NETO
 
@@ -34,7 +34,7 @@ programa {
       escreva("4 - Pesquisar produto\n")
       escreva("5 - Exibir produtos em estoque\n")
       escreva("6 - Calcular valor total do estoque\n\n")
-      escreva("Escolha uma opÁ„o: ")
+      escreva("Escolha uma op√ß√£o: ")
       leia(opcao)
 
       escolha(opcao) {
@@ -63,7 +63,7 @@ programa {
           calcularValorTotalEstoque()
           pare
         caso contrario:
-          escreva("\nEscolha uma opc„o v·lida!")
+          escreva("\nEscolha uma opc√£o v√°lida!")
           u.aguarde(3000)
           limpa()
           menu()
@@ -76,14 +76,14 @@ programa {
       inteiro contaEstoque = 0
 
 
-      //verifica se o estoque est· cheio. Caso esteja, retorna ao menu inicial
+      //verifica se o estoque est√° cheio. Caso esteja, retorna ao menu inicial
       para(inteiro c=0 ; c<totalProdutos ; c++) {
         se(produtos[c][0] != " ") {
           contaEstoque++
         }
 
         se (contaEstoque == 100) {
-          escreva("O estoque est· cheio. N„o È possÌ≠vel adicionar mais produtos!")
+          escreva("O estoque est√° cheio. N√£o √© poss√≠¬≠vel adicionar mais produtos!")
           u.aguarde(3000)
           limpa()
           menu()
@@ -95,11 +95,11 @@ programa {
       escreva("Digite o nome do produto: ")
       leia(nomeProduto)
 
-      //verifica se o produto j· est· cadastrado no estoque. Caso j· esteja, solicita um novo nome.
+      //verifica se o produto j√° est√° cadastrado no estoque. Caso j√° esteja, solicita um novo nome.
       para(inteiro d=0;d < totalProdutos; d++) {
         se (produtos[d][0] == nomeProduto) { 
           escreva("\n================ AVISO ================\n")
-          escreva("Este produto j· existe no estoque!")
+          escreva("Este produto j√° existe no estoque!")
           u.aguarde(3000)
           limpa()
           menu()
@@ -114,7 +114,7 @@ programa {
           leia(quantidade)
           produtos[d][1] = quantidade
           cadeia valorUnitario
-          escreva("Digite o valor unit·rio: ")
+          escreva("Digite o valor unit√°rio: ")
           leia(valorUnitario)
           produtos[d][2] = valorUnitario
           escreva("\nProduto adicionado ao estoque.")
@@ -139,7 +139,7 @@ programa {
           escreva("\nDigite a nova quantidade do produto: ")
           leia(quantidade)
           cadeia valorUnitario
-          escreva("\nDigite o novo valor unit·rio:  ")
+          escreva("\nDigite o novo valor unit√°rio:  ")
           leia(valorUnitario)
           produtos[f][1] = quantidade
           produtos[f][2] = valorUnitario
@@ -148,7 +148,7 @@ programa {
           limpa()
           menu()
         } senao {
-          escreva("\nPRODUTO N√O ENCONTRADO NO ESTOQUE.")
+          escreva("\nPRODUTO N√ÉO ENCONTRADO NO ESTOQUE.")
           u.aguarde(3000)
           limpa()
           menu()
@@ -163,23 +163,33 @@ programa {
       escreva("Digite o nome do produto a ser removido: ")
       leia(nomeProduto)
 
+      inteiro contador = 0
+      inteiro posicaoAlteracao
+
       para(inteiro i = 0 ; i < 100; i++) {
         se(produtos[i][0] == nomeProduto) {
-          produtos[i][0] = " "
-          produtos[i][1] = "0"
-          produtos[i][2] = "0"
-          escreva("\nProduto removido com sucesso.")
-          u.aguarde(3000)
-          limpa()
-          menu()
+          posicaoAlteracao = i
         } senao {
-          escreva("Produto selecionado n„o existe.")
-          u.aguarde(3000)
-          limpa()
-          menu()
+          contador++
         }
       }
+
+      se(contador == 100) {
+         escreva("Produto selecionado n√£o existe.")
+         u.aguarde(3000)
+         limpa()
+         menu()
+      } senao {
+        produtos[posicaoAlteracao][0] = " "
+        produtos[posicaoAlteracao][1] = "0"
+        produtos[posicaoAlteracao][2] = "0"
+        escreva("\nProduto removido com sucesso.")
+        u.aguarde(3000)
+        limpa()
+        menu()
+      }        
     }
+
 
     funcao pesquisarProduto() {
       escreva("============= PESQUISAR PRODUTO =============\n\n")    
@@ -197,7 +207,7 @@ programa {
           limpa()
           menu()
         } senao {
-          escreva("\nProduto selecionado n„o existe.")
+          escreva("\nProduto selecionado n√£o existe.")
           u.aguarde(3000)
           limpa()
           menu()
@@ -214,7 +224,7 @@ programa {
       }
 
       se(contador == 0) {
-        escreva("O ESTOQUE EST¡ VAZIO. N√O H¡ RESULTADOS A SEREM EXIBIDOS.")
+        escreva("O ESTOQUE EST√Å VAZIO. N√ÉO H√Å RESULTADOS A SEREM EXIBIDOS.")
         u.aguarde(3000)
         limpa()
         menu()
@@ -223,7 +233,7 @@ programa {
           se(produtos[h][0] != " "){
             escreva("Nome: ", produtos[h][0], "\n")
             escreva("Quantidade: ", produtos[h][1], " unidade(s)\n")
-            escreva("Valor unit·rio: R$ ", produtos[h][2])
+            escreva("Valor unit√°rio: R$ ", produtos[h][2])
             escreva("\n\n==========\n\n")
           }
         }
@@ -241,7 +251,7 @@ programa {
         real resultado = quantidade * valor
         soma = soma + resultado
       }
-      escreva("O valor total do estoque È: R$ ", soma)
+      escreva("O valor total do estoque √©: R$ ", soma)
       u.aguarde(3000)
       limpa()
       menu()
